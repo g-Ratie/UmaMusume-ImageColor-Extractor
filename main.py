@@ -12,8 +12,9 @@ def get_images():
         page = browser.new_page()
         page.goto("https://umamusume.jp/character/")
 
-        img_elements = page.query_selector_all("ul.character__list li a img")
+        page.wait_for_timeout(5000)
 
+        img_elements = page.query_selector_all("ul.character__list li a img")
         # alt属性と画像URLを取得してダウンロード
         for img_element in img_elements:
             alt_text = img_element.get_attribute("alt")
